@@ -1,0 +1,212 @@
+const MenShirts = [
+    {
+        id: 'gh93zx82-kj12po45-lm34ab67',
+        name: "City Vibe Shirt",
+        category: 'shirt',
+        description: "Urban-inspired shirt perfect for a casual look.",
+        material: 'Polyester Blend',
+        brand: 'Urban Threads',
+        price: 29.99,
+        sizes: ['M', 'L', 'XL', 'XXL'],
+        gender: 'men',
+        rating: 4.3,
+        reviews: 78,
+        availability: true,
+        type: 'group',
+        image: '/images/products/mc/shirtsProducts/group1/s1.avif',
+        multiple: [
+            {
+                image: '/images/products/mc/shirtsProducts/group1/s2.avif'
+            }
+        ]
+    },
+    {
+        id: 'mn74vw21-qt56zr83-up92jy61',
+        name: "Satin Elegance Shirt",
+        category: 'shirt',
+        description: "Luxurious satin shirt ideal for formal gatherings.",
+        material: 'Satin Fabric',
+        brand: 'EliteWear',
+        price: 45.99,
+        sizes: ['S', 'M', 'L', 'XL'],
+        gender: 'men',
+        rating: 4.8,
+        reviews: 110,
+        availability: true,
+        type: 'group',
+        image: '/images/products/mc/shirtsProducts/group2/s1.avif',
+        multiple: [
+            {
+                image: '/images/products/mc/shirtsProducts/group2/s2.avif'
+            }
+        ]
+    },
+    {
+        id: 'jk83mn92-zx45op67-uv29qs80',
+        name: "Retro Denim Shirt",
+        category: 'shirt',
+        description: "Vintage denim shirt with a modern twist.",
+        material: 'Denim',
+        brand: 'DenimMaster',
+        price: 39.99,
+        sizes: ['S', 'M', 'L', 'XL'],
+        gender: 'men',
+        rating: 4.5,
+        reviews: 90,
+        availability: true,
+        type: 'group',
+        image: '/images/products/mc/shirtsProducts/group3/s1.avif',
+        multiple: [
+            {
+                image: '/images/products/mc/shirtsProducts/group3/s2.avif'
+            }
+        ]
+    },
+    {
+        id: 'b78jsd82-lkd12-a2d3',
+        type: 'single',
+        gender: 'men',
+        category: 'shirt',
+        name: "Product 1",
+        price: 29.99,
+        description: "A great product for casual wear.",
+        sizes: ['S', 'M', 'L', 'XL'],
+        material: 'Cotton',
+        brand: 'BrandCo',
+        availability: true,
+        rating: 4.5,
+        reviews: 120,
+        image: '/images/products/mc/shirtsProducts/p (1).avif' // First single image
+    },
+    {
+        id: 'f91kdh83-wdj37-b2r6',
+        type: 'single',
+        gender: 'women',
+        category: 'shirt',
+        name: "Product 2",
+        price: 39.99,
+        description: "Stylish and comfortable shirt for all seasons.",
+        sizes: ['S', 'M', 'L', 'XL'],
+        material: 'Linen',
+        brand: 'ChicWear',
+        availability: true,
+        rating: 4.7,
+        reviews: 100,
+        image: '/images/products/mc/shirtsProducts/p (2).avif' // Second single image
+    },
+    {
+        id: 'd29lkj93-pfa15-t4w7',
+        type: 'single',
+        gender: 'men',
+        category: 'shirt',
+        name: "Product 3",
+        price: 34.99,
+        description: "Perfect for casual or semi-formal occasions.",
+        sizes: ['S', 'M', 'L', 'XL'],
+        material: 'Polyester',
+        brand: 'FashionX',
+        availability: true,
+        rating: 4.2,
+        reviews: 80,
+        image: '/images/products/mc/shirtsProducts/p (3).avif' // Third single image
+    },
+    {
+        id: 'a82shd12-kjs04-d1r9',
+        type: 'single',
+        gender: 'unisex',
+        category: 'shirt',
+        name: "Product 4",
+        price: 44.99,
+        description: "A versatile and comfortable shirt for everyday use.",
+        sizes: ['S', 'M', 'L', 'XL'],
+        material: 'Cotton',
+        brand: 'UrbanWear',
+        availability: true,
+        rating: 4.6,
+        reviews: 150,
+        image: '/images/products/mc/shirtsProducts/p (4).avif' // Fourth single image
+    },
+    {
+        id: 'j84fkd23-mlw56-z8p3',
+        type: 'single',
+        gender: 'women',
+        category: 'shirt',
+        name: "Product 5",
+        price: 49.99,
+        description: "Elegant and fashionable shirt for special occasions.",
+        sizes: ['S', 'M', 'L', 'XL'],
+        material: 'Silk',
+        brand: 'EliteFashion',
+        availability: true,
+        rating: 4.8,
+        reviews: 200,
+        image: '/images/products/mc/shirtsProducts/p (5).avif' // Fifth single image
+    },
+    {
+        id: 's92hsk04-wel82-m1k7',
+        type: 'single',
+        gender: 'men',
+        category: 'shirt',
+        name: "Product 6",
+        price: 54.99,
+        description: "A high-quality shirt for a professional look.",
+        sizes: ['S', 'M', 'L', 'XL'],
+        material: 'Wool',
+        brand: 'ProStyle',
+        availability: true,
+        rating: 4.4,
+        reviews: 140,
+        image: '/images/products/mc/shirtsProducts/p (6).avif' // Sixth single image
+    },
+    {
+        id: 'p39lkj23-fgd98-b1q6',
+        type: 'single',
+        gender: 'unisex',
+        category: 'shirt',
+        name: "Product 7",
+        price: 59.99,
+        description: "Trendy and stylish shirt for fashion-forward individuals.",
+        sizes: ['S', 'M', 'L', 'XL'],
+        material: 'Linen',
+        brand: 'TrendyWear',
+        availability: true,
+        rating: 4.3,
+        reviews: 130,
+        image: '/images/products/mc/shirtsProducts/p (7).avif' // Seventh single image
+    },
+    {
+        id: 'q28wer12-zmn68-j1w9',
+        type: 'single',
+        gender: 'women',
+        category: 'shirt',
+        name: "Product 8",
+        price: 64.99,
+        description: "A beautifully crafted shirt with premium fabric.",
+        sizes: ['S', 'M', 'L', 'XL'],
+        material: 'Cotton',
+        brand: 'PremiumFashion',
+        availability: true,
+        rating: 4.5,
+        reviews: 110,
+        image: '/images/products/mc/shirtsProducts/p (8).avif' // Eighth single image
+    },
+    {
+        id: 't67sdf19-pgf22-b3r5',
+        type: 'single',
+        gender: 'men',
+        category: 'shirt',
+        name: "Product 9",
+        price: 69.99,
+        description: "A sleek and modern design for the fashion-conscious.",
+        sizes: ['S', 'M', 'L', 'XL'],
+        material: 'Polyester',
+        brand: 'FashionElite',
+        availability: true,
+        rating: 4.6,
+        reviews: 180,
+        image: '/images/products/mc/shirtsProducts/p (9).avif' // Ninth single image
+    },
+
+];
+
+export default MenShirts;
