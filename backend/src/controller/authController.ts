@@ -36,31 +36,39 @@ export const UserSignUp = async (req: Request, res: Response) => {
 // Login Controller
 export const UserLogin = async (req: Request, res: Response) => {
     const { email, password } = req.body;
-
+  
+    // Find the user in the database by email
     const user = await User.findOne({ email });
-
+  
     if (!user) {
-        return res.status(404).json({ message: "User Not Found" });
+      return res.status(404).json({ message: "User Not Found" });
     }
-
+  
+    // Compare the password with the hashed password
     const isMatch = await bcrypt.compare(password, user.password);
-
+  
     if (!isMatch) {
-        return res.status(400).json({ message: "Invalid password" });
+      return res.status(400).json({ message: "Invalid password" });
     }
-
-    const token = jwt.sign({ id: user._id, email: user.email, username: user.username }, process.env.JWT_SECRET_KEY!, { expiresIn: '1d' });  // Token expires in 1 day
-
+  
+    // Generate a JWT token
+    const token = jwt.sign(
+      { _id: user._id, email: user.email, username: user.username }, 
+      process.env.JWT_SECRET_KEY!, 
+      { expiresIn: '1d' }  // token expires in 1 day
+    );
+  
+    // Set the token as an HttpOnly cookie
     res.cookie('HToken', token, {
-        expires: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000),  // Set expiry to 5 days
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',  // Use HTTPS in production, local should be false
-        sameSite: 'none',  // Required for cross-origin requests
+      expires: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000),  // 5 days expiration
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',  // Set 'secure' flag for production environment
+      sameSite: 'lax',  // Allow cookies to be sent with cross-site requests in a safe manner
     });
+  
+    // Respond with success message and user data (optional)
     res.status(200).json({ message: 'Successfully logged in', user: user });
-};
-
-// Authentication Check Controller
+  };
 export const AuthCheck = async (req: Request, res: Response) => {
     try {
         const token = req.cookies.HToken;

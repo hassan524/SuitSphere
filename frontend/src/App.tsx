@@ -1,29 +1,38 @@
-import { Routes, Route } from 'react-router-dom';
-import MainLayout from './layouts/MainLayout';
-import { AppProvider } from './context/context';
-import Home from './pages/Home';
-import Collection from './pages/Collection';
-import Product from './pages/Product';
-import LoginLayout from './layouts/LoginLayout';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
+import { Routes, Route } from "react-router-dom";
+import { useEffect, useContext } from "react";
 import axios from "axios";
-import { useEffect } from 'react';
-import { useContext } from 'react';
-import AppContext from './context/context';
-import Profile from './pages/Profile';
+import AppContext from "./context/context";
+
+import MainLayout from "./layouts/MainLayout";
+import LoginLayout from "./layouts/LoginLayout";
+
+import Home from "./pages/Home";
+import Collection from "./pages/Collection";
+import Product from "./pages/Product";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Profile from "./pages/Profile";
 
 const App = () => {
-  const { loginUser } = useContext(AppContext); 
-
+  const { loginUser, SetCarts } = useContext(AppContext);
 
   useEffect(() => {
-    axios.get("http://localhost:5200/api/auth/authcheck", { withCredentials: true })
-      .then(res => {
-        loginUser(res.data.user);  
+    axios
+      .get("http://localhost:5200/api/auth/authcheck", { withCredentials: true })
+      .then((res) => {
+        loginUser(res.data.user);
+
+        return axios.get("http://localhost:5200/api/cart/getProduct", {
+          withCredentials: true,
+        });
       })
-      .catch(err => console.error("AuthCheck Error:", err.response?.data || err.message));
-  }, []);  
+      .then((res) => {
+        SetCarts(res.data.products)
+      })
+      .catch((err) => {
+        console.error("Error:", err.response?.data || err.message);
+      });
+  }, []);
 
   return (
     <Routes>
@@ -43,5 +52,4 @@ const App = () => {
   );
 };
 
-// Now wrap your App component with AppProvider at a higher level (index.tsx or App.tsx entry point)
 export default App;

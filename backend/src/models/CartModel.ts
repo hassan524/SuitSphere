@@ -3,7 +3,7 @@ import mongoose, { Schema, Document } from 'mongoose';
 export interface ICartProduct {
     productId: string;
     quantity: number;
-    size: string; // Ensure size is stored
+    size: string; 
 }
 
 export interface ICart extends Document {

@@ -18,7 +18,6 @@ const Navbar = () => {
     const dropdownRef = useRef(null);
     const navigate = useNavigate();
 
-    console.log(user)
 
 
     const handleClickOutside = (event) => {

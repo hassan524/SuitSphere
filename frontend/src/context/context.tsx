@@ -7,6 +7,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     const [IsSideBarOpen, SetIsSidebarOpen] = useState(false)
     const [IsAuthOpen, SetIsAuthOpen] = useState(false)
 
+    const [Carts, SetCarts] = useState(null)
+
     const [user, setUser] = useState(null);
 
     const loginUser = (userData: any) => {
@@ -19,7 +21,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   
 
     return (
-        <AppContext.Provider value={{ SetIsSelectWomens, IsSelectWomens, SetIsSidebarOpen, IsSideBarOpen, SetIsAuthOpen, IsAuthOpen, loginUser, logoutUser, user, setUser }}>
+        <AppContext.Provider value={{ SetIsSelectWomens, IsSelectWomens, SetIsSidebarOpen, IsSideBarOpen, SetIsAuthOpen, IsAuthOpen, loginUser, logoutUser, user, setUser, Carts, SetCarts }}>
             {children}
         </AppContext.Provider>
     );
