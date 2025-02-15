@@ -3,7 +3,8 @@ import connectDB from './config/db';
 import cors from 'cors';
 
 import auth from './routes/auth';
-import cart from './routes/cart'; // ✅ FIXED: Corrected route import
+import cart from './routes/cart'; 
+import order from './routes/order'
 
 import cookieParser from 'cookie-parser';
 import { Request, Response } from 'express';
@@ -23,6 +24,8 @@ app.use(cookieParser());
 
 app.use('/api/auth', auth);
 app.use('/api/cart', cart);  
+app.use('/api/order', order);  
+
 
 app.get('/', (req: Request, res: Response) => {
     res.send('Server is running...');

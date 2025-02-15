@@ -4,7 +4,7 @@ import AppContext from "@/context/context";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const Sidebar = () => {
-    const { IsSideBarOpen, SetIsSidebarOpen, IsSelectWomens, SetIsSelectWomens } = useContext(AppContext);
+    const { IsSideBarOpen, SetIsSidebarOpen, IsSelectWomens, SetIsSelectWomens, user } = useContext(AppContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -49,14 +49,20 @@ const Sidebar = () => {
                     {/* <div className="text-center">
                         <h2 className="text-[2rem] text-gray-400 font-semibold uppercase tracking-wide">SuitsSphere</h2>
                     </div> */}
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-5">
                         <NavLink to="/" className="no-underline">
                             <div className="flex items-center gap-3 text-lg hover:underline cursor-pointer">
                                 <span>Home</span>
                             </div>
                         </NavLink>
                         <hr />
-                        <Accordion type="single" collapsible>
+                        <NavLink to="/orders" className="no-underline">
+                            <div className="flex items-center gap-3 text-lg hover:underline cursor-pointer">
+                                <span>Orders</span>
+                            </div>
+                        </NavLink>
+                        <hr />
+                        <Accordion className="flex flex-col gap-5" type="single" collapsible>
                             <AccordionItem value="collection">
                                 <AccordionTrigger className="text-lg flex items-center hover:underline">
                                     <span>Collection</span>
@@ -77,9 +83,18 @@ const Sidebar = () => {
                                 </AccordionTrigger>
                                 <AccordionContent>
                                     <div className="flex flex-col gap-5 mt-2 ml-4">
-                                        <span className="text-xl hover:underline cursor-pointer">Account</span>
-                                        <span className="text-xl hover:underline cursor-pointer" onClick={() => navigate("/login")}>Login</span>
-                                        <span className="text-xl hover:underline cursor-pointer" onClick={() => navigate("/signup")}>Sign Up</span>
+                                        {user ? (
+                                            <>
+                                                <NavLink to="/profile" className="text-gray-800 hover:font-semibold">Profile</NavLink>
+                                                <NavLink to="/signup" className="text-gray-800 hover:font-semibold">Logout</NavLink>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <NavLink to="/login" className="text-gray-800 hover:font-semibold">Login</NavLink>
+                                                <NavLink to="/signup" className="text-gray-800 hover:font-semibold">SignUp</NavLink>
+                                            </>
+                                        )}
+
                                     </div>
                                 </AccordionContent>
                             </AccordionItem>

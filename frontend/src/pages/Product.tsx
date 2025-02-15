@@ -20,6 +20,7 @@ const Product = () => {
   const [selectedSize, setSelectedSize] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(false);
+  console.log(product)
 
   const collections = {
     men: { pants: MensPants, shirt: MenShirts, shoes: MensShoes, sweater: MensSweaters },
@@ -56,11 +57,20 @@ const Product = () => {
     try {
       const response = await axios.post(
         "http://localhost:5200/api/cart/addProduct",
-        { userID: user.id, productID: product.id, quantity, size: selectedSize },
+        {
+          userID: user.id,
+          productID: product.id,
+          quantity,
+          size: selectedSize,
+          price: Math.round(product.price),
+          image: product.image,
+          name: product.name
+        },
         { withCredentials: true }
       );
 
       const newCartItem = response.data.product;
+      alert('successfuly get')
 
       const existingCartItem = Carts.find((cart) => cart.productId === newCartItem.productId);
 
@@ -118,9 +128,8 @@ const Product = () => {
                 {product.sizes.map((size) => (
                   <span
                     key={size}
-                    className={`px-4 py-2 border rounded-md text-sm sm:text-base cursor-pointer hover:bg-gray-100 transition-colors ${
-                      selectedSize === size ? "bg-gray-200 border-gray-600" : ""
-                    }`}
+                    className={`px-4 py-2 border rounded-md text-sm sm:text-base cursor-pointer hover:bg-gray-100 transition-colors ${selectedSize === size ? "bg-gray-200 border-gray-600" : ""
+                      }`}
                     onClick={() => setSelectedSize(size)}
                   >
                     {size}

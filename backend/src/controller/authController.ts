@@ -55,7 +55,7 @@ export const UserLogin = async (req: Request, res: Response) => {
     const token = jwt.sign(
       { _id: user._id, email: user.email, username: user.username }, 
       process.env.JWT_SECRET_KEY!, 
-      { expiresIn: '1d' }  // token expires in 1 day
+      { expiresIn: '3d' }  // token expires in 1 day
     );
   
     // Set the token as an HttpOnly cookie

@@ -12,7 +12,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
-    const { IsSelectWomens, SetIsSelectWomens, SetIsSidebarOpen, user } = useContext(AppContext);
+    const { IsSelectWomens, SetIsSelectWomens, SetIsSidebarOpen, user, Carts } = useContext(AppContext);
     const location = useLocation();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
@@ -50,6 +50,10 @@ const Navbar = () => {
     const handleCollection = (name: string) => {
         navigate(`/${IsSelectWomens ? 'women' : 'men'}/Collection/${name}`);
     };
+
+    const handleCart = () => {
+        navigate('/cart');
+    }
 
     return (
         <>
@@ -101,7 +105,19 @@ const Navbar = () => {
                                 )}
                             </div>
 
-                            {user ? (<i className="fa-solid fa-cart-shopping hover:text-gray-600 transition-all cursor-pointer active:bg-slate-200"></i>) : null}
+                            {/* Cart Icon with Badge */}
+                            {user && (
+                                <div className="relative cursor-pointer" onClick={handleCart}>
+                                    <i className="fa-solid fa-cart-shopping hover:text-gray-600 transition-all active:bg-slate-200"></i>
+
+                                    {/* Cart Badge */}
+                                    {Carts?.length > 0 && (
+                                        <span className="absolute -top-2 -right-2 bg-gray-700 text-white text-xs font-semibold w-5 h-5 flex items-center justify-center rounded-full">
+                                            {Carts.length}
+                                        </span>
+                                    )}
+                                </div>
+                            )}
 
 
                         </div>
@@ -136,9 +152,15 @@ const Navbar = () => {
                     )}
 
                     {!isHomeOrMensOrWomens && (
-                        <NavLink to="/" className="text-gray-700 border-s ps-6 border-gray-200 hover:text-black transition-all">
-                            Home
-                        </NavLink>
+                        <>
+                            <NavLink to="/" className="text-gray-700 border-s ps-6 border-gray-200 hover:text-black transition-all">
+                                Home
+                            </NavLink>
+
+                            <NavLink to="/orders" className="text-gray-700 border-s ps-6 border-gray-200 hover:text-black transition-all">
+                                Orders
+                            </NavLink>
+                        </>
                     )}
                     {isHomeOrMensOrWomens && (
                         <ul className="flex gap-6 text-gray-700 sm:text-sm text-xs font-medium">

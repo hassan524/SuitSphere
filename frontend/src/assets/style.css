@@ -8,4 +8,22 @@ body {
 
 .lecker {
     font-family: "Leckerli One", serif;
-  }
+}
+
+.after::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 2px;
+    background-color: #09090b;
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translateY(-50%);
+}
+
+@media (max-width: 1390px) {
+    .after::after {
+        display: none;
+    }
+}

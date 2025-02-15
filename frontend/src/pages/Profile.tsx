@@ -1,5 +1,4 @@
-import  { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useContext } from 'react';
 import AppContext from '@/context/context';
@@ -9,70 +8,99 @@ const Profile = () => {
     const [email, setEmail] = useState('john.doe@example.com');
     const [password, setPassword] = useState('********');
 
-    const {user} = useContext(AppContext)
-    console.log(user)
-
-    const handleSave = () => {
-        // Handle saving or updating account info here
-        console.log('Account info saved!');
-    };
+    const { user } = useContext(AppContext);
+    console.log(user);
 
     return (
-        <div className="flex sm:px-8 px-6 mt-[5rem]">
-            {/* Sidebar */}
-            <div className="w-1/4 md:flex flex-col gap-4 hidden h-full px-4">
-                <span className="font-semibold text-xl">Account</span>
-                <NavLink to="/logout" className="text-gray-800 text-lg hover:text-gray-950">Logout</NavLink>
+        <div className="flex  flex-col gap-[2rem] justify-center py-16 px-5">
+            {/* Profile Header */}
+            <div className="">
+                <h2 className="text-3xl md:text-4xl text-center text-gray-800 uppercase mb-6">
+                    Account Settings
+                </h2>
+                <p className="text-center text-gray-500 mb-12">
+                    Update your personal information and connect with us on social media.
+                </p>
             </div>
 
-            {/* Main Content */}
-            <div className="w-full flex flex-col sm:gap-10 gap-8 sm:px-8 md:border-s md:border-slate-200">
-                {/* Account Information */}
-                <div className="flex items-center justify-start">
-                    <h2 className="md:text-[4rem] garamond text-[4rem] font-semibold">Account</h2>
-                </div>
+            <div className="sm:max-w-4xl w-full mx-auto rounded-2xl">
 
-                <hr />
-
-                {/* Form to Edit Account */}
-                <div className="w-full flex flex-col gap-10">
-                    <div className="flex sm:flex-row flex-col justify-between sm:items-center items-start">
-                        <h2 className="font-semibold text-xl">Contact Information</h2>
-                        <Button className='py-6 sm:flex hidden'>SAVE CHANGES</Button>
-                    </div>
-                    <form className="flex flex-col gap-8">
-                        {/* Name and Email Inputs Side by Side */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 sm:gap-4 gap-8">
-                            <div className="flex flex-col">
-                                <input
-                                    type="text"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    className="w-full px-2 py-4 border-none bg-gray-100 rounded-md"
-                                />
-                            </div>
-                            <div className="flex flex-col">
-                                <input
-                                    type="email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    className="w-full p-2 py-4 border-none bg-gray-100 rounded-md"
-                                />
-                            </div>
-                        </div>
-
-                        {/* Password Input */}
+                {/* Profile Form */}
+                <form className="flex w-full flex-col sm:gap-10 gap-14">
+                    {/* Input Fields */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 sm:gap-10 gap-14">
                         <div className="flex flex-col">
                             <input
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                className="w-full p-2 py-4 border-none bg-gray-100 rounded-md"
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                className="w-full px-4 py-3 border-b border-gray-300 focus:outline-none "
+                                placeholder="Enter your name"
                             />
                         </div>
+                        <div className="flex flex-col">
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="w-full px-4 py-3 border-b border-gray-300 focus:outline-none "
+                                placeholder="Enter your email"
+                            />
+                        </div>
+                    </div>
+                    <div className="flex flex-col">
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className="w-full px-4 py-3 border-b border-gray-300 focus:outline-none "
+                            placeholder="Enter your password"
+                        />
+                    </div>
 
-                        <Button className='sm:hidden flex'>SAVE CHANGES</Button>
-                    </form>
+                    {/* Save Button */}
+                    <Button className="w-44 self-center">
+                        Save Changes
+                    </Button>
+                </form>
+            </div>
+
+            {/* Social Media Section */}
+            <div className="max-w-4xl mx-auto mt-12">
+                <h3 className="text-2xl font-semibold text-gray-800 text-center mb-6">
+                    Follow Us on Social Media
+                </h3>
+                <div className="flex justify-center items-center gap-8">
+                    {/* GitHub */}
+                    <a
+                        href="https://github.com/yourusername"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center h-12 w-12 bg-gray-800 text-white rounded-full shadow-md hover:scale-110 transition"
+                        aria-label="GitHub"
+                    >
+                        <i className="fa-brands fa-github text-xl"></i>
+                    </a>
+                    {/* LinkedIn */}
+                    <a
+                        href="https://www.linkedin.com/in/yourusername"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center h-12 w-12 bg-blue-700 text-white rounded-full shadow-md hover:scale-110 transition"
+                        aria-label="LinkedIn"
+                    >
+                        <i className="fa-brands fa-linkedin text-xl"></i>
+                    </a>
+                    {/* Instagram */}
+                    <a
+                        href="https://www.instagram.com/yourusername"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center h-12 w-12 bg-gradient-to-r from-pink-500 to-purple-500 text-white rounded-full shadow-md hover:scale-110 transition"
+                        aria-label="Instagram"
+                    >
+                        <i className="fa-brands fa-instagram text-xl"></i>
+                    </a>
                 </div>
             </div>
         </div>

@@ -19,13 +19,14 @@ export const authMiddleware = (req: IRequest, res: Response, next: NextFunction)
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY as string) as jwt.JwtPayload; 
+    console.log('this shit',decoded)
 
-    if (!decoded.id) {
+    if (!decoded._id) {
       res.status(401).json({ message: "Invalid token payload." });
       return;
     }
 
-    req.userId = decoded.id as Schema.Types.ObjectId;
+    req.userId = decoded._id as Schema.Types.ObjectId;
 
     next();
   } catch (error) {

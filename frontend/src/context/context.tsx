@@ -9,11 +9,17 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
     const [Carts, SetCarts] = useState(null)
 
+    const [Orders, SetOrders] = useState(null)
+
     const [user, setUser] = useState(null);
 
     const loginUser = (userData: any) => {
       setUser(userData); 
     };
+
+    const settingCarts = (products) => {
+      SetCarts(products)
+    }
   
     const logoutUser = () => {
       setUser(null); 
@@ -21,7 +27,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   
 
     return (
-        <AppContext.Provider value={{ SetIsSelectWomens, IsSelectWomens, SetIsSidebarOpen, IsSideBarOpen, SetIsAuthOpen, IsAuthOpen, loginUser, logoutUser, user, setUser, Carts, SetCarts }}>
+        <AppContext.Provider value={{ SetIsSelectWomens, IsSelectWomens, SetIsSidebarOpen, IsSideBarOpen, SetIsAuthOpen, IsAuthOpen, loginUser, logoutUser, user, setUser, Carts, SetCarts, settingCarts, SetOrders, Orders }}>
             {children}
         </AppContext.Provider>
     );
