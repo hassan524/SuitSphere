@@ -57,6 +57,15 @@ const Search = () => {
         navigate(`/${gender}/${category}/${id}`);
     };
 
+    if (!sortedProducts || sortedProducts.length === 0) {
+        return (
+          <div className="flex flex-col justify-center items-center py-10">
+            <h2 className="text-[2rem] uppercase text-center px-1">- No products found matching your query. -</h2>
+            <img src="/logos/nofound.jpg" alt="No Orders Found" className="w-60 mt-4" />
+          </div>
+        );
+      }
+
     return (
         <section className="flex flex-col items-center gap-7 w-full py-14 px-7">
             <div className="text-center flex flex-col gap-5">
