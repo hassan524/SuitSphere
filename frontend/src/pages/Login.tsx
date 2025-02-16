@@ -20,23 +20,21 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     axios
-      .post("http://localhost:5200/api/auth/login", formData, {
+      .post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`, formData, {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       })
       .then((res) => {
         loginUser(res.data.user);
         toast.success(res.data.message || "Login successful!");
-        setTimeout(() => navigate("/"), 1500); 
+        setTimeout(() => navigate("/"), 1500);
       })
       .catch((err) => {
         console.error("Error response:", err.response);
         toast.error(
-          err.response && err.response.data && err.response.data.message
-            ? err.response.data.message
-            : "An unexpected error occurred"
+          err.response?.data?.message || "An unexpected error occurred"
         );
       });
   };

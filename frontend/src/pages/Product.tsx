@@ -57,7 +57,7 @@ const Product = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:5200/api/cart/addProduct",
+        `${import.meta.env.VITE_BACKEND_URL}/api/cart/addProduct`,
         {
           userID: user.id,
           productID: product.id,
@@ -65,7 +65,7 @@ const Product = () => {
           size: selectedSize,
           price: Math.round(product.price),
           image: product.image,
-          name: product.name
+          name: product.name,
         },
         { withCredentials: true }
       );

@@ -1,6 +1,6 @@
 const f2 = [
     {
-        id: '1029384756102938',
+        id: 'a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5',
         type: 'group',
         gender: 'women',
         category: 'sweater',
@@ -19,7 +19,7 @@ const f2 = [
         ]
     },
     {
-        id: '5647382910564738',
+        id: 'a1b2c3d4e5f6g7h8i9j0k1l2m3n4p6',
         type: 'group',
         gender: 'women',
         category: 'sweater',
@@ -38,7 +38,7 @@ const f2 = [
         ]
     },
     {
-        id: '9081726354908172',
+        id: 'a1b2c3d4e5f6g7h8i9j0k1l2m3n4q7',
         type: 'group',
         gender: 'women',
         category: 'sweater',
@@ -57,7 +57,7 @@ const f2 = [
         ]
     },
     {
-        id: '7264539186726453',
+        id: 'group2-7841xyz9-p8h3j1-1k2q',
         type: 'group',
         gender: 'women',
         category: 'shoes',
@@ -76,7 +76,7 @@ const f2 = [
         ]
     },
     {
-        id: '3847561920384756',
+        id: 'f92ksh82-jwq93-x3gf',
         name: "Flared Red Pants",
         category: 'pants',
         gender: 'women',

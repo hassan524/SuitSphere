@@ -18,16 +18,17 @@ import Order from "./pages/Order";
 
 const App = () => {
   const { loginUser, SetCarts, SetOrders } = useContext(AppContext);
+  console.log("Backend URL:", import.meta.env.VITE_BACKEND_URL);
 
   useEffect(() => {
     axios
-      .get("http://localhost:5200/api/auth/authcheck", { withCredentials: true })
+      .get(`${import.meta.env.VITE_BACKEND_URL}/api/auth/authcheck`, { withCredentials: true })
       .then((res) => {
         loginUser(res.data.user);
-
+  
         return Promise.all([
-          axios.get("http://localhost:5200/api/cart/getProduct", { withCredentials: true }),
-          axios.get("http://localhost:5200/api/order/get-order", { withCredentials: true })
+          axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/cart/getProduct`, { withCredentials: true }),
+          axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/order/get-order`, { withCredentials: true }),
         ]);
       })
       .then(([cartRes, orderRes]) => {
@@ -38,7 +39,7 @@ const App = () => {
         console.error("Error:", err.response?.data || err.message);
       });
   }, []);
-
+  
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>

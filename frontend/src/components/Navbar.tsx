@@ -109,7 +109,7 @@ const Navbar = () => {
                                         {user ? (
                                             <>
                                                 <NavLink to="/profile" className="text-gray-800 hover:font-semibold">Profile</NavLink>
-                                                <NavLink to="/signup" className="text-gray-800 hover:font-semibold" onClick={() => SetIsLogOutOpen(true)}>Logout</NavLink>
+                                                <span className="text-gray-800 hover:font-semibold cursor-pointer" onClick={() => SetIsLogOutOpen(true)}>Logout</span>
                                             </>
                                         ) : (
                                             <>

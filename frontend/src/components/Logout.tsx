@@ -1,3 +1,5 @@
+import axios from 'axios';
+import { toast } from 'sonner';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -11,8 +13,29 @@ import {
 import { useContext } from 'react';
 import AppContext from '@/context/context';
 
+export const logout = async () => {
+  try {
+    const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/logout`, {}, { withCredentials: true });
+    return res.data;
+  } catch (error) {
+    console.error('Logout failed:', error);
+    throw error;
+  }
+};
+
 const LogOut = () => {
   const { IsLogOutOpen, SetIsLogOutOpen } = useContext(AppContext);
+
+  const handleLogout = async () => {
+    try {
+      const resData = await logout();
+      toast.success(resData.message || "Logged out successfully");
+      SetIsLogOutOpen(false); // Close the modal after logout
+      window.location.reload(); // Refresh the page after logout
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Logout failed");
+    }
+  };
 
   return (
     <AlertDialog open={IsLogOutOpen} onOpenChange={SetIsLogOutOpen}>
@@ -24,7 +47,7 @@ const LogOut = () => {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter className="flex flex-col gap-2">
-          <AlertDialogAction>Log Out</AlertDialogAction>
+          <AlertDialogAction onClick={handleLogout}>Log Out</AlertDialogAction>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
         </AlertDialogFooter>
       </AlertDialogContent>

@@ -1,6 +1,6 @@
 const m2 = [
     {
-        id: '8765432109876543',
+        id: 'b7f3d2a8-29b7-4b2b-b786-6fe8a90b79f5',
         type: 'group',
         gender: 'men',
         category: 'sweater',
@@ -19,7 +19,7 @@ const m2 = [
         ]
     },
     {
-        id: '9876543210987654',
+        id: 'b1c2a7d4-7b5d-4cb5-b8b3-60d5d2b3141a',
         type: 'group',
         gender: 'men',
         category: 'sweater',
@@ -38,7 +38,7 @@ const m2 = [
         ]
     },
     {
-        id: '1928374655647382',
+        id: 'e9b7a65c-e96a-4b9d-b1b5-9c11d09b6a02',
         type: 'group',
         gender: 'men',
         category: 'sweater',
@@ -57,7 +57,7 @@ const m2 = [
         ]
     },
     {
-        id: '5678392012938475',
+        id: 'mshoes-9823af19b1c44d5a87e3',
         type: 'group',
         gender: 'men',
         category: 'shoes',
@@ -76,7 +76,7 @@ const m2 = [
         ]
     },
     {
-        id: '2103948576573829',
+        id: 'mshoes-76fb329cde124b50a8d2',
         type: 'group',
         gender: 'men',
         category: 'shoes',

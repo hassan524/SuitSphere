@@ -9,8 +9,6 @@ const Profile = () => {
     const [password, setPassword] = useState('********');
 
     const { user } = useContext(AppContext);
-    console.log(user)
-    console.log(user);
 
     return (
         <div className="flex  flex-col gap-[2rem] justify-center py-16 px-5">

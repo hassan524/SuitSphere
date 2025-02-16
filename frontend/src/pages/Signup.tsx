@@ -19,17 +19,17 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     axios
-      .post("http://localhost:5200/api/auth/signup", formData, {
+      .post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/signup`, formData, {
         headers: { "Content-Type": "application/json" },
       })
       .then((res) => {
         toast.success(res.data.message);
-        navigate("/login"); // Redirect to login after signup
+        navigate("/login");
       })
       .catch((err) => {
-        const errorMessage = err.response ? err.response.data.message : "An unexpected error occurred";
+        const errorMessage = err.response?.data?.message || "An unexpected error occurred";
         setError(errorMessage);
         toast.error(errorMessage);
       });

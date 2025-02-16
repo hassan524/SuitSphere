@@ -33,28 +33,29 @@ const PlaceOrder = () => {
       toast.error("Please complete all required information.");
       return;
     }
-
+  
     const filteredCarts = Carts.map(({ _id, ...rest }) => rest);
-
+  
     try {
       const response = await axios.post(
-        "http://localhost:5200/api/order/place-order",
+        `${import.meta.env.VITE_BACKEND_URL}/api/order/place-order`,
         { carts: filteredCarts, address, PaymentMethod },
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         }
       );
-
+  
       SetOrders((prevOrders) => [...prevOrders, response.data.order]);
-      navigate('/orders')
-
+      navigate('/orders');
+  
       toast.success(response.data.message);
     } catch (error) {
       console.error("Error placing order:", error);
       toast.error("Failed to place order. Please try again.");
     }
   };
+  
   return (
     <div className="flex lg:h-[calc(100vh-18vh)] lg:flex-row flex-col items-center justify-center px-4 md:px-16 gap-[5rem] py-10">
       {/* Left Side - Form Section */}
