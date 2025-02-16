@@ -4,8 +4,8 @@ import axios from "axios";
 import AppContext from "./context/context";
 
 import MainLayout from "./layouts/MainLayout";
-import LoginLayout from "./layouts/LoginLayout";
 
+import Search from "./pages/Search";
 import Home from "./pages/Home";
 import Collection from "./pages/Collection";
 import Product from "./pages/Product";
@@ -24,7 +24,7 @@ const App = () => {
       .get("http://localhost:5200/api/auth/authcheck", { withCredentials: true })
       .then((res) => {
         loginUser(res.data.user);
-  
+
         return Promise.all([
           axios.get("http://localhost:5200/api/cart/getProduct", { withCredentials: true }),
           axios.get("http://localhost:5200/api/order/get-order", { withCredentials: true })
@@ -32,7 +32,7 @@ const App = () => {
       })
       .then(([cartRes, orderRes]) => {
         SetCarts(cartRes.data.products);
-        SetOrders(orderRes.data.orders); 
+        SetOrders(orderRes.data.orders);
       })
       .catch((err) => {
         console.error("Error:", err.response?.data || err.message);
@@ -51,11 +51,12 @@ const App = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/place-order" element={<PlaceOrder />} />
         <Route path="/orders" element={<Order />} />
-        <Route element={<LoginLayout />}>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-        </Route>
+        {/* <Route element={<LoginLayout />}>  */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/search" element={<Search />} />
       </Route>
+      {/* </Route>  */}
     </Routes>
   );
 };
