@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useContext } from "react";
 import AppContext from "@/context/context";
+import { toast } from "sonner";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -11,7 +12,6 @@ const Login = () => {
     password: "",
   });
   const navigate = useNavigate();
-  const [error, setError] = useState("");
   const { loginUser } = useContext(AppContext);
 
   const handleChange = (e) => {
@@ -28,11 +28,13 @@ const Login = () => {
       })
       .then((res) => {
         loginUser(res.data.user);
-        navigate("/");
+        toast.success(res.data.message || "Login successful!");
+        setTimeout(() => navigate("/"), 1500); // Delay navigation to show toast
       })
       .catch((err) => {
-        setError(
-          err.response
+        console.error("Error response:", err.response);
+        toast.error(
+          err.response && err.response.data && err.response.data.message
             ? err.response.data.message
             : "An unexpected error occurred"
         );
@@ -50,7 +52,7 @@ const Login = () => {
       <div className="w-full max-w-lg bg-white p-8">
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="flex flex-col gap-14">
+        <form onSubmit={handleSubmit} className="flex flex-col sm:gap-14 gap-10">
           {/* Email Input */}
           <div className="flex flex-col">
             <input
@@ -74,9 +76,6 @@ const Login = () => {
               className="w-full px-4 py-3 border border-gray-300 rounded-lg"
             />
           </div>
-
-          {/* Error Message */}
-          {error && <p className="text-red-500 text-center">{error}</p>}
 
           {/* Submit Button */}
           <Button

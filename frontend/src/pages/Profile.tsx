@@ -9,6 +9,7 @@ const Profile = () => {
     const [password, setPassword] = useState('********');
 
     const { user } = useContext(AppContext);
+    console.log(user)
     console.log(user);
 
     return (
@@ -32,7 +33,7 @@ const Profile = () => {
                         <div className="flex flex-col">
                             <input
                                 type="text"
-                                value={name}
+                                value={user.username}
                                 onChange={(e) => setName(e.target.value)}
                                 className="w-full px-4 py-3 border-b border-gray-300 focus:outline-none "
                                 placeholder="Enter your name"
@@ -41,7 +42,7 @@ const Profile = () => {
                         <div className="flex flex-col">
                             <input
                                 type="email"
-                                value={email}
+                                value={user.email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 className="w-full px-4 py-3 border-b border-gray-300 focus:outline-none "
                                 placeholder="Enter your email"

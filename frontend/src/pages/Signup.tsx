@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { NavLink, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "sonner";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -24,15 +25,13 @@ const Signup = () => {
         headers: { "Content-Type": "application/json" },
       })
       .then((res) => {
-        console.log("Success:", res.data);
+        toast.success("Account created successfully! Redirecting to login...");
         navigate("/login"); // Redirect to login after signup
       })
       .catch((err) => {
-        setError(
-          err.response
-            ? err.response.data.message
-            : "An unexpected error occurred"
-        );
+        const errorMessage = err.response ? err.response.data.message : "An unexpected error occurred";
+        setError(errorMessage);
+        toast.error(errorMessage);
       });
   };
 
@@ -46,7 +45,7 @@ const Signup = () => {
       {/* Form Wrapper */}
       <div className="w-full max-w-xl bg-white p-8">
         {/* Form */}
-        <form onSubmit={handleSubmit} className="flex flex-col gap-14">
+        <form onSubmit={handleSubmit} className="flex flex-col sm:gap-14 gap-10">
           {/* Username Input */}
           <div className="flex flex-col">
             <input

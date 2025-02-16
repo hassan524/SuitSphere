@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import { toast } from "sonner"; 
 import MensPants from "@/products/MenPants";
 import MenShirts from "@/products/MenShirts";
 import MensShoes from "@/products/MenShoes";
@@ -45,11 +46,11 @@ const Product = () => {
 
   const handleAddToCart = async () => {
     if (!user) {
-      alert("You need to log in to add items to the cart.");
+      toast.error("You need to log in to add items to the cart.");
       return;
     }
     if (!selectedSize) {
-      alert("Please select a size before adding to the cart.");
+      toast.error("Please select a size before adding to the cart.");
       return;
     }
 
@@ -70,9 +71,9 @@ const Product = () => {
       );
 
       const newCartItem = response.data.product;
-      alert('successfuly get')
+      toast.success(response.data.message || "Successfully added to cart!");
 
-      const existingCartItem = Carts.find((cart) => cart.productId === newCartItem.productId);
+      const existingCartItem = Carts.find((cart: any) => cart.productId === newCartItem.productId);
 
       if (!existingCartItem) {
         SetCarts([...Carts, newCartItem]);
@@ -81,7 +82,7 @@ const Product = () => {
       }
     } catch (error) {
       console.error("Error adding to cart:", error.response || error.message);
-      alert(error.response?.data?.message || "An error occurred while adding to cart.");
+      toast.error(error.response?.data?.message || "An error occurred while adding to cart.");
     }
     setLoading(false);
   };
@@ -121,15 +122,13 @@ const Product = () => {
               </p>
             </div>
 
-            {/* SIZE SELECTOR */}
             <div className="flex flex-col gap-2">
               <p className="text-gray-600 font-semibold text-lg">Sizes:</p>
               <div className="flex flex-wrap gap-4">
                 {product.sizes.map((size) => (
                   <span
                     key={size}
-                    className={`px-4 py-2 border rounded-md text-sm sm:text-base cursor-pointer hover:bg-gray-100 transition-colors ${selectedSize === size ? "bg-gray-200 border-gray-600" : ""
-                      }`}
+                    className={`px-4 py-2 border rounded-md text-sm sm:text-base cursor-pointer hover:bg-gray-100 transition-colors ${selectedSize === size ? "bg-gray-200 border-gray-600" : ""}`}
                     onClick={() => setSelectedSize(size)}
                   >
                     {size}
@@ -138,42 +137,17 @@ const Product = () => {
               </div>
             </div>
 
-            {/* QUANTITY SELECTOR */}
             <div className="flex items-center gap-3 mt-4">
               <p className="text-gray-600 font-semibold text-lg">Quantity:</p>
               <div className="flex items-center bg-slate-100 rounded-md px-4 py-2">
-                <button
-                  className="text-lg px-3 font-semibold hover:text-gray-700"
-                  onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
-                >
-                  -
-                </button>
+                <button className="text-lg px-3 font-semibold hover:text-gray-700" onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}>-</button>
                 <span className="text-lg font-semibold mx-4">{quantity}</span>
-                <button
-                  className="text-lg px-3 font-semibold hover:text-gray-700"
-                  onClick={() => setQuantity((prev) => prev + 1)}
-                >
-                  +
-                </button>
+                <button className="text-lg px-3 font-semibold hover:text-gray-700" onClick={() => setQuantity((prev) => prev + 1)}>+</button>
               </div>
             </div>
 
-            <Button
-              className="mt-6 w-full sm:w-[14rem] flex items-center justify-center gap-2 py-5 text-lg"
-              onClick={handleAddToCart}
-              disabled={loading}
-            >
-              {loading ? (
-                <>
-                  <i className="fa-solid fa-spinner fa-spin"></i>
-                  <span>Adding...</span>
-                </>
-              ) : (
-                <>
-                  <i className="fa-solid fa-cart-shopping"></i>
-                  <span>Add To Cart</span>
-                </>
-              )}
+            <Button className="mt-6 w-full sm:w-[14rem] flex items-center justify-center gap-2 py-5 text-lg" onClick={handleAddToCart} disabled={loading}>
+              {loading ? (<><i className="fa-solid fa-spinner fa-spin"></i><span>Adding...</span></>) : (<><i className="fa-solid fa-cart-shopping"></i><span>Add To Cart</span></>)}
             </Button>
           </div>
         </div>

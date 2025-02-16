@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const PlaceOrder = () => {
   const { user, Carts, SetOrders } = useContext(AppContext);
@@ -18,7 +19,7 @@ const PlaceOrder = () => {
   const firstName = usernameParts[0] || "";
   const lastName = usernameParts[1] || "";
 
-  const subtotal = (Carts || []).reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const subtotal = (Carts || []).reduce((acc, item) => acc + (item.price || 0) * (item.quantity || 1), 0);
   const shippingFee = 5;
   const total = subtotal + shippingFee;
 
@@ -29,7 +30,7 @@ const PlaceOrder = () => {
 
   const handleOrder = async () => {
     if (!address || !PaymentMethod) {
-      alert("Please complete all required information.");
+      toast.error("Please complete all required information.");
       return;
     }
 
@@ -48,9 +49,10 @@ const PlaceOrder = () => {
       SetOrders((prevOrders) => [...prevOrders, response.data.order]);
       navigate('/orders')
 
-      alert(response.data.message);
+      toast.success(response.data.message);
     } catch (error) {
       console.error("Error placing order:", error);
+      toast.error("Failed to place order. Please try again.");
     }
   };
   return (

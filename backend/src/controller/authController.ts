@@ -7,7 +7,6 @@ dotenv.config();
 
 const saltRounds = 10;
 
-// SignUp Controller
 export const UserSignUp = async (req: Request, res: Response) => {
     const { username, email, password } = req.body;
 
@@ -33,42 +32,37 @@ export const UserSignUp = async (req: Request, res: Response) => {
     }
 };
 
-// Login Controller
 export const UserLogin = async (req: Request, res: Response) => {
     const { email, password } = req.body;
-  
-    // Find the user in the database by email
+
     const user = await User.findOne({ email });
-  
+
     if (!user) {
       return res.status(404).json({ message: "User Not Found" });
     }
-  
-    // Compare the password with the hashed password
+
     const isMatch = await bcrypt.compare(password, user.password);
-  
+
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid password" });
     }
-  
-    // Generate a JWT token
+
     const token = jwt.sign(
       { _id: user._id, email: user.email, username: user.username }, 
       process.env.JWT_SECRET_KEY!, 
-      { expiresIn: '3d' }  // token expires in 1 day
+      { expiresIn: '3d' }
     );
-  
-    // Set the token as an HttpOnly cookie
+
     res.cookie('HToken', token, {
-      expires: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000),  // 5 days expiration
+      expires: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000),
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',  // Set 'secure' flag for production environment
-      sameSite: 'lax',  // Allow cookies to be sent with cross-site requests in a safe manner
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
     });
-  
-    // Respond with success message and user data (optional)
+
     res.status(200).json({ message: 'Successfully logged in', user: user });
-  };
+};
+
 export const AuthCheck = async (req: Request, res: Response) => {
     try {
         const token = req.cookies.HToken;
@@ -76,7 +70,6 @@ export const AuthCheck = async (req: Request, res: Response) => {
         if (!token) {
             return res.status(401).json({ isAuthenticated: false, message: "No token provided" });
         }
-
 
         if (!process.env.JWT_SECRET_KEY) {
             console.error("Error: JWT_SECRET_KEY is missing in .env file!");
@@ -95,3 +88,5 @@ export const AuthCheck = async (req: Request, res: Response) => {
         return res.status(401).json({ isAuthenticated: false, message: "Invalid or expired token" });
     }
 };
+
+export const LogOut = async (req: Request)
