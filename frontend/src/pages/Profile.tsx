@@ -4,8 +4,8 @@ import { useContext } from 'react';
 import AppContext from '@/context/context';
 
 const Profile = () => {
-    const [name, setName] = useState('John Doe');
-    const [email, setEmail] = useState('john.doe@example.com');
+    const [, setName] = useState('');
+    const [, setEmail] = useState('');
     const [password, setPassword] = useState('********');
 
     const { user } = useContext(AppContext);

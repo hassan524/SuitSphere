@@ -25,7 +25,7 @@ const Signup = () => {
         headers: { "Content-Type": "application/json" },
       })
       .then((res) => {
-        toast.success("Account created successfully! Redirecting to login...");
+        toast.success(res.data.message);
         navigate("/login"); // Redirect to login after signup
       })
       .catch((err) => {
