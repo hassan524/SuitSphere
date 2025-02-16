@@ -4,7 +4,7 @@ import AppContext from "@/context/context";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const Sidebar = () => {
-    const { IsSideBarOpen, SetIsSidebarOpen, IsSelectWomens, SetIsSelectWomens, user } = useContext(AppContext);
+    const { IsSideBarOpen, SetIsSidebarOpen, IsSelectWomens, SetIsSelectWomens, user, SetIsLogOutOpen } = useContext(AppContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -86,7 +86,7 @@ const Sidebar = () => {
                                         {user ? (
                                             <>
                                                 <NavLink to="/profile" className="text-gray-800 hover:font-semibold">Profile</NavLink>
-                                                <NavLink to="/signup" className="text-gray-800 hover:font-semibold">Logout</NavLink>
+                                                <NavLink to="/signup" className="text-gray-800 hover:font-semibold" onClick={() => SetIsLogOutOpen(true)}>Logout</NavLink>
                                             </>
                                         ) : (
                                             <>

@@ -31,7 +31,6 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-to-b from-white to-gray-200 shadow-lg mt-[5rem] text-gray-800 py-10 px-5 md:px-10">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
-        {/* Brand Section */}
         <div className="space-y-4">
           <h2 className="text-2xl font-bold">SuitsSphere</h2>
           <p className="text-sm text-gray-600">

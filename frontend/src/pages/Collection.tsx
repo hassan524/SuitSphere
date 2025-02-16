@@ -22,7 +22,6 @@ const Collection = () => {
     const [sortOption, setSortOption] = useState('Relevance');
     const navigate = useNavigate();
 
-    // Get product array based on Gender & Type
     const getProductArray = () => {
         if (Gender === 'men') {
             switch (Type) {
@@ -48,7 +47,6 @@ const Collection = () => {
         setProducts(getProductArray());
     }, [Gender, Type]);
 
-    // Sorting logic
     const sortedProducts = [...products].sort((a, b) => {
         if (sortOption === 'price-low-high') {
             return a.price - b.price;
@@ -57,10 +55,9 @@ const Collection = () => {
         } else if (sortOption === 'top-rated') {
             return b.rating - a.rating;
         }
-        return 0; // Default relevance order
+        return 0;
     });
 
-    // If "Top Rated" is selected, filter products with rating 4.8 or higher
     const filteredProducts = sortOption === "top-rated"
         ? sortedProducts.filter(product => product.rating >= 4.8)
         : sortedProducts;
@@ -71,7 +68,6 @@ const Collection = () => {
 
     return (
         <section className="flex flex-col items-center gap-7 w-full py-14 px-7">
-            {/* Hero / Top Section */}
             <div className="text-center flex flex-col gap-5">
                 <h2 className="lecker leading-[3rem] capitalize text-[4rem] font-bold text-gray-800">
                     {Gender} {Type}
@@ -121,7 +117,6 @@ const Collection = () => {
                             className="product-card cursor-pointer bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform hover:scale-105"
                             onClick={() => getProduct(product.gender, product.category, product.id)}
                         >
-                            {/* Full-bleed Image */}
                             <div className="relative h-64">
                                 <img
                                     src={product.image}
@@ -129,12 +124,10 @@ const Collection = () => {
                                     className="w-full h-full object-cover"
                                 />
                             </div>
-                            {/* Product Details */}
                             <div className="p-4">
                                 <h3 className="text-lg font-semibold text-gray-900">{product.name}</h3>
                                 <p className="mt-1 text-gray-700 font-medium">${product.price}</p>
                                 <p className="mt-1 text-gray-500 text-sm">Brand: {product.brand}</p>
-                                {/* Extra descriptive text */}
                                 <p className="mt-2 text-gray-600 text-sm">
                                     Experience the elegance and superior craftsmanship with this exclusive product.
                                 </p>

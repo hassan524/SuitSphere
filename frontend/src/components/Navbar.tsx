@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import AppContext from '@/context/context';
@@ -12,7 +12,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
-    const { IsSelectWomens, SetIsSelectWomens, SetIsSidebarOpen, user, Carts } = useContext(AppContext);
+    const { IsSelectWomens, SetIsSelectWomens, SetIsSidebarOpen, user, Carts, SetIsLogOutOpen } = useContext(AppContext);
     const location = useLocation();
     const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -99,7 +99,6 @@ const Navbar = () => {
                             onClick={() => setIsSearchBarOpen(true)}
                         ></i>
 
-                        {/* User Icon Dropdown */}
                         <div className="relative sm:block hidden">
                             <i className="fa-regular fa-user text-xl p-2 hover:text-gray-600 cursor-pointer" onClick={() => setIsDropdownOpen(!isDropdownOpen)}></i>
 
@@ -110,7 +109,7 @@ const Navbar = () => {
                                         {user ? (
                                             <>
                                                 <NavLink to="/profile" className="text-gray-800 hover:font-semibold">Profile</NavLink>
-                                                <NavLink to="/signup" className="text-gray-800 hover:font-semibold">Logout</NavLink>
+                                                <NavLink to="/signup" className="text-gray-800 hover:font-semibold" onClick={() => SetIsLogOutOpen(true)}>Logout</NavLink>
                                             </>
                                         ) : (
                                             <>
@@ -123,7 +122,6 @@ const Navbar = () => {
                             )}
                         </div>
 
-                        {/* Cart Icon with Badge */}
                         {user && (
                             <div className="relative cursor-pointer" onClick={handleCart}>
                                 <i className="fa-solid fa-cart-shopping hover:text-gray-600 transition-all"></i>

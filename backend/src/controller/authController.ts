@@ -89,4 +89,15 @@ export const AuthCheck = async (req: Request, res: Response) => {
     }
 };
 
-export const LogOut = async (req: Request)
+export const UserLogout = async (req: Request, res: Response) => {
+    try {
+        res.clearCookie('HToken', {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production', 
+            sameSite: 'lax',
+        });
+        res.status(200).json({ message: 'Successfully logged out' });
+    } catch (error) {
+        res.status(500).json({ message: 'Server Error', error });
+    }
+};

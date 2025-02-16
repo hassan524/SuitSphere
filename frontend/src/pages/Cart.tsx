@@ -61,6 +61,11 @@ const Cart = () => {
         navigate("/place-order");
     };
 
+    const handleNavigate = () => {
+
+    }
+
+
     if (!Carts || Carts.length === 0) {
       return (
         <div className="flex flex-col justify-center items-center py-10">
@@ -72,7 +77,6 @@ const Cart = () => {
 
     return (
         <div className="flex flex-col gap-[3.5rem] py-10 px-8 md:px-20 lg:px-32">
-            {/* Cart Items */}
             <h2 className="md:text-[3rem] text-[2rem] uppercase text-center">- YOUR CART -</h2>
             <div className="flex flex-col gap-16">
                 {Carts?.length > 0 ? (
@@ -80,7 +84,7 @@ const Cart = () => {
                         <div key={index} className="flex flex-col gap-8 border-b border-gray-200 py-6">
                             <div className="flex md:flex-row gap-10 flex-col w-full items-center justify-between">
                                 <div className="flex gap-5 items-center md:w-[300px] w-full">
-                                    <img className="w-16 md:w-28 rounded-md" src={cartItem.image} alt={cartItem.name} />
+                                    <img className="w-16 md:w-28 rounded-md cursor-pointer" onClick={handleNavigate} src={cartItem.image} alt={cartItem.name} />
                                     <div className="flex flex-col gap-2">
                                         <span className="text-lg font-medium">{cartItem.name}</span>
                                         <div className="flex items-center gap-4">
@@ -120,7 +124,6 @@ const Cart = () => {
                 )}
             </div>
 
-            {/* Cart Totals */}
             <div className="w-full text-xl mx-auto items-center justify-center max-w-2xl flex flex-col gap-8">
                 <div className="flex w-full justify-between border-b border-gray-200 py-3">
                     <span>Subtotal</span>

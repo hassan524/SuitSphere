@@ -50,7 +50,7 @@ const Search = () => {
         } else if (sortOption === 'top-rated') {
             return b.rating - a.rating;
         }
-        return 0; // Default relevance order
+        return 0;
     });
 
     const getProduct = (gender, category, id) => {

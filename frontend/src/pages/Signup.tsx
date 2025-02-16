@@ -37,16 +37,12 @@ const Signup = () => {
 
   return (
     <div className="flex flex-col sm:my-0 my-12 items-center justify-center gap-[1rem] py-10 px-1 md:px-20 lg:px-32">
-      {/* Header */}
-      <div className="text-center">
-        <h2 className="md:text-[3rem] text-[4rem] uppercase text-center garamond">- Sign Up -</h2>
+      <div className="text-center px-1">
+        <h2 className="md:text-[3rem] text-[3.5rem] uppercase text-center garamond">- Sign Up -</h2>
         <p className="text-gray-500 text-xl mt-2">Create your account below</p>
       </div>
-      {/* Form Wrapper */}
-      <div className="w-full max-w-xl bg-white p-8">
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="flex flex-col sm:gap-14 gap-10">
-          {/* Username Input */}
+      <div className="w-full sm:max-w-xl max-w-2xl bg-white p-6">
+        <form onSubmit={handleSubmit} className="flex w-full flex-col gap-10">
           <div className="flex flex-col">
             <input
               type="text"
@@ -58,7 +54,6 @@ const Signup = () => {
             />
           </div>
 
-          {/* Email Input */}
           <div className="flex flex-col">
             <input
               type="email"
@@ -70,7 +65,6 @@ const Signup = () => {
             />
           </div>
 
-          {/* Password Input */}
           <div className="flex flex-col">
             <input
               type="password"
@@ -82,10 +76,8 @@ const Signup = () => {
             />
           </div>
 
-          {/* Error Message */}
           {error && <p className="text-red-500 text-center">{error}</p>}
 
-          {/* Submit Button */}
           <Button
             type="submit"
             className="w-full py-6 text-xl"
@@ -94,7 +86,6 @@ const Signup = () => {
           </Button>
         </form>
 
-        {/* Login Link */}
         <p className="text-center text-gray-600 mt-5">
           Already have an account?{" "}
           <NavLink

@@ -24,7 +24,6 @@ export const addToCart = async (req: IRequest, res: Response) => {
         let cart = await CartModel.findOne({ authorID: userId });
 
         if (!cart) {
-            // If cart doesn't exist, create a new one
             cart = new CartModel({
                 authorID: userId,
                 products: [
@@ -146,7 +145,6 @@ export const decreaseCartsQuantity = async (req: IRequest, res: Response) => {
     }
 };
 
-// Increase Cart Quantity
 export const increaseCartsQuantity = async (req: IRequest, res: Response) => {
     try {
         const userId = req.userId; // Extract user ID from request
@@ -171,7 +169,6 @@ export const increaseCartsQuantity = async (req: IRequest, res: Response) => {
 };
 
 
-// Remove Cart Item
 export const RemoveCart = async (req: IRequest, res: Response) => {
     try {
         const userId = req.userId; // Extract user ID from request

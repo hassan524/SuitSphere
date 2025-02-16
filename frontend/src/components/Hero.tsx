@@ -9,9 +9,7 @@ const Hero = () => {
 
   return (
     <>
-      {/* Hero Section */}
       <div className="w-full flex justify-center items-center h-[90vh] relative">
-        {/* Two Images Side by Side for Larger Screens */}
         <div className="w-1/2 h-full relative hidden sm:block">
           <img
             className={`object-cover w-full h-full ${IsSelectWomens ? 'object-top' : 'object-center'}`}
@@ -27,16 +25,14 @@ const Hero = () => {
           />
         </div>
 
-        {/* Single Full-Width Image for Mobile (Below sm) */}
         <div className="w-full h-full relative sm:hidden">
           <img
             className="object-cover w-full h-full object-center"
-            src={img1} // Show only the first image for mobile
+            src={img1} 
             alt="Mobile Hero Banner"
           />
         </div>
 
-        {/* Centered Text */}
         <div className="absolute mb-10 inset-0 flex flex-col gap-5 justify-center items-center text-center text-white px-6">
           <h1 className="text-[4rem] leading-[3.4rem] font-semibold">
             Shop By Look

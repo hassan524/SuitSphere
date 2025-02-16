@@ -3,7 +3,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { useContext } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react"; // Navigation icons
+import { ChevronLeft, ChevronRight } from "lucide-react"; 
 import { useNavigate } from "react-router-dom";
 import AppContext from "@/context/context";
 

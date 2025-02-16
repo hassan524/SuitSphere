@@ -29,7 +29,7 @@ const Login = () => {
       .then((res) => {
         loginUser(res.data.user);
         toast.success(res.data.message || "Login successful!");
-        setTimeout(() => navigate("/"), 1500); // Delay navigation to show toast
+        setTimeout(() => navigate("/"), 1500); 
       })
       .catch((err) => {
         console.error("Error response:", err.response);
@@ -43,17 +43,13 @@ const Login = () => {
 
   return (
     <div className="flex flex-col sm:my-0 my-12 items-center justify-center gap-[1rem] py-10 px-1 md:px-20 lg:px-32">
-      {/* Header */}
       <div className="text-center">
-        <h2 className="md:text-[3rem] text-[4rem] uppercase text-center garamond">- Login -</h2>
+        <h2 className="md:text-[3rem] text-[3.5rem] uppercase text-center garamond">- Login -</h2>
         <p className="text-gray-500 text-xl mt-2">Access your account below</p>
       </div>
-      {/* Form Wrapper */}
-      <div className="w-full max-w-lg bg-white p-8">
+      <div className="w-full sm:max-w-xl max-w-2xl bg-white p-6">
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="flex flex-col sm:gap-14 gap-10">
-          {/* Email Input */}
           <div className="flex flex-col">
             <input
               type="email"
@@ -65,7 +61,6 @@ const Login = () => {
             />
           </div>
 
-          {/* Password Input */}
           <div className="flex flex-col">
             <input
               type="password"
@@ -77,7 +72,6 @@ const Login = () => {
             />
           </div>
 
-          {/* Submit Button */}
           <Button
             type="submit"
             className="w-full"
@@ -86,7 +80,6 @@ const Login = () => {
           </Button>
         </form>
 
-        {/* Signup Link */}
         <p className="text-center text-gray-600 mt-5">
           Don’t have an account?{" "}
           <NavLink

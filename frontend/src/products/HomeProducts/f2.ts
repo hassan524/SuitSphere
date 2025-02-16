@@ -13,9 +13,9 @@ const f2 = [
         availability: true,
         rating: 4.5,
         reviews: 120,
-        image: '/images/products/fc/sweatersProducts/group1/s1.avif',
+        image: '/images/products/fc/sweatersProduct/group1/s1.avif',
         multiple: [
-            { image: '/images/products/fc/sweatersProducts/group1/s2.avif' }
+            { image: '/images/products/fc/sweatersProduct/group1/s2.avif' }
         ]
     },
     {
@@ -32,9 +32,9 @@ const f2 = [
         availability: true,
         rating: 4.6,
         reviews: 140,
-        image: '/images/products/fc/sweatersProducts/group2/s1.avif',
+        image: '/images/products/fc/sweatersProduct/group2/s1.avif',
         multiple: [
-            { image: '/images/products/fc/sweatersProducts/group2/s2.avif' }
+            { image: '/images/products/fc/sweatersProduct/group2/s2.avif' }
         ]
     },
     {
@@ -51,9 +51,9 @@ const f2 = [
         availability: true,
         rating: 4.7,
         reviews: 130,
-        image: '/images/products/fc/sweatersProducts/group3/s1.avif',
+        image: '/images/products/fc/sweatersProduct/group3/s1.avif',
         multiple: [
-            { image: '/images/products/fc/sweatersProducts/group3/s2.avif' }
+            { image: '/images/products/fc/sweatersProduct/group3/s2.avif' }
         ]
     },
     {
@@ -70,9 +70,9 @@ const f2 = [
         availability: true,
         rating: 4.8,
         reviews: 180,
-        image: '/images/products/fc/shoesProducts/group2/s1.avif',
+        image: '/images/products/fc/shoesProduct/group2/s1.avif',
         multiple: [
-            { image: '/images/products/fc/shoesProducts/group2/s2.avif' }
+            { image: '/images/products/fc/shoesProduct/group2/s2.avif' }
         ]
     },
     {
@@ -89,10 +89,10 @@ const f2 = [
         availability: true,
         rating: 4.7,
         reviews: 150,
-        image: '/images/products/fc/pantsProducts/group3/s1.avif', // First group image
+        image: '/images/products/fc/pantsProduct/group3/s1.avif', 
         multiple: [
             {
-                image: '/images/products/fc/pantsProducts/group3/s2.avif' // Second group image
+                image: '/images/products/fc/pantsProduct/group3/s2.avif' 
             }
         ]
     }

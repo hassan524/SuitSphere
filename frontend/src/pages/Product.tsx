@@ -91,9 +91,9 @@ const Product = () => {
     <div className="min-h-screen">
       <div className="container mx-auto px-4 py-10">
         <div className="flex flex-col lg:flex-row lg:gap-8 gap-10">
-          <div className="lg:w-1/2 flex flex-col gap-6">
+          <div className="lg:w-1/2 flex flex-col gap-10">
             <img className="w-full h-auto object-cover rounded-md shadow-lg" src={selectedImage} alt={product.name} />
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap sm:justify-center justify-start gap-4">
               {thumbnails.map((thumb, i) => (
                 <img
                   key={i}

@@ -4,19 +4,17 @@ import AppContext from "@/context/context";
 const Order = () => {
   const { Orders } = useContext(AppContext);
 
-  // Helper function to calculate time left until expiration in hours and minutes
   const calculateDaysLeft = (orderDate: string): string => {
-    const expirationTime = new Date(orderDate).getTime() + 24 * 60 * 60 * 1000; // Add 24 hours to the order date
+    const expirationTime = new Date(orderDate).getTime() + 24 * 60 * 60 * 1000; 
     const now = new Date().getTime();
     const timeLeft = expirationTime - now;
 
     if (timeLeft <= 0) {
-      return "Expired"; // If time has passed, mark as expired
+      return "Expired"; 
     }
 
-    const hoursLeft = Math.floor(timeLeft / (1000 * 60 * 60)); // Convert to hours
-    const minutesLeft = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)); // Convert remainder to minutes
-
+    const hoursLeft = Math.floor(timeLeft / (1000 * 60 * 60)); 
+    const minutesLeft = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)); 
     return `${hoursLeft}h ${minutesLeft}m left`;
   };
 
@@ -31,12 +29,10 @@ const Order = () => {
 
   return (
     <div className="flex flex-col gap-[3.5rem] py-10 px-8 md:px-20 lg:px-32">
-      {/* Orders Section */}
       <div className="flex flex-col gap-14">
         <h2 className="md:text-[3rem] text-[2rem] uppercase text-center">- YOUR ORDERS -</h2>
         {Orders.map((order, orderIndex) => (
           <div key={orderIndex} className="pb-6 flex flex-col gap-16">
-            {/* Cart Items */}
             {order.carts.map((cartItem, cartIndex) => (
               <div
                 key={cartIndex}
@@ -80,7 +76,6 @@ const Order = () => {
                     {calculateDaysLeft(order.date)}
                   </div>
 
-                  {/* Mobile Layout */}
                   <div className="flex w-full justify-between md:hidden items-center gap-4">
                     <div className="flex uppercase items-center gap-2">
                       <div className="h-2 w-2 rounded-full bg-green-500"></div>

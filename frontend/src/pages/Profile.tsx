@@ -14,7 +14,6 @@ const Profile = () => {
 
     return (
         <div className="flex  flex-col gap-[2rem] justify-center py-16 px-5">
-            {/* Profile Header */}
             <div className="">
                 <h2 className="text-3xl md:text-4xl text-center text-gray-800 uppercase mb-6">
                     Account Settings
@@ -26,9 +25,7 @@ const Profile = () => {
 
             <div className="sm:max-w-4xl w-full mx-auto rounded-2xl">
 
-                {/* Profile Form */}
                 <form className="flex w-full flex-col sm:gap-10 gap-14">
-                    {/* Input Fields */}
                     <div className="grid grid-cols-1 md:grid-cols-2 sm:gap-10 gap-14">
                         <div className="flex flex-col">
                             <input
@@ -59,20 +56,17 @@ const Profile = () => {
                         />
                     </div>
 
-                    {/* Save Button */}
                     <Button className="w-44 self-center">
                         Save Changes
                     </Button>
                 </form>
             </div>
 
-            {/* Social Media Section */}
             <div className="max-w-4xl mx-auto mt-12">
                 <h3 className="text-2xl font-semibold text-gray-800 text-center mb-6">
                     Follow Us on Social Media
                 </h3>
                 <div className="flex justify-center items-center gap-8">
-                    {/* GitHub */}
                     <a
                         href="https://github.com/yourusername"
                         target="_blank"
@@ -82,7 +76,6 @@ const Profile = () => {
                     >
                         <i className="fa-brands fa-github text-xl"></i>
                     </a>
-                    {/* LinkedIn */}
                     <a
                         href="https://www.linkedin.com/in/yourusername"
                         target="_blank"
@@ -92,7 +85,6 @@ const Profile = () => {
                     >
                         <i className="fa-brands fa-linkedin text-xl"></i>
                     </a>
-                    {/* Instagram */}
                     <a
                         href="https://www.instagram.com/yourusername"
                         target="_blank"
