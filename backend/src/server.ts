@@ -14,11 +14,20 @@ dotenv.config();
 const PORT = process.env.PORT || 5200;
 const app = express();
 
-app.use(cors({
-    origin: process.env.FRONTED_URL,
-    credentials: true,
-}));
-
+app.use(
+    cors({
+        origin: function (origin, callback) {
+            console.log("Origin:", origin); // Log this on the DEPLOYED backend!
+            const allowedOrigins = [process.env.FRONTED_URL]; // Or an array of allowed origins
+            if (!origin || allowedOrigins.includes(origin)) { // Allow all if no origin (e.g. Postman) or origin is in the allowed list
+                callback(null, true);
+            } else {
+                callback(new Error('Not allowed by CORS'));
+            }
+        },
+        credentials: true,
+    })
+);
 app.use(express.json());
 app.use(cookieParser());
 
