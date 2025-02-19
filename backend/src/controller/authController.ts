@@ -54,10 +54,7 @@ export const UserLogin = async (req: Request, res: Response) => {
     );
 
     res.cookie('HToken', token, {
-      expires: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000),
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'None',
+      expires: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000)
     });
 
     res.status(200).json({ message: 'Successfully logged in', user: user });
