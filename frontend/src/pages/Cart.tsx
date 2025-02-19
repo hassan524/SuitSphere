@@ -26,7 +26,7 @@ const Cart = () => {
 
     const fetchUpdatedCart = async () => {
         try {
-            const response = await axios.get("http://localhost:5200/api/cart/getProduct", { withCredentials: true });
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/cart/getProduct`, { withCredentials: true });
             settingCarts(response.data.products);
         } catch (error) {
             console.error("Error fetching updated cart:", error);
@@ -35,7 +35,7 @@ const Cart = () => {
 
     const handleQuantityChange = async (productId: number, action: "increase" | "decrease") => {
         const endpoint =
-            action === "increase" ? "http://localhost:5200/api/cart/increaseCart" : "http://localhost:5200/api/cart/decreaseCart";
+            action === "increase" ? `${import.meta.env.VITE_BACKEND_URL}/api/cart/increaseCart` : `${import.meta.env.VITE_BACKEND_URL}/api/cart/decreaseCart`;
         try {
             await axios.post(endpoint, { productId }, { withCredentials: true });
             fetchUpdatedCart();
@@ -46,7 +46,7 @@ const Cart = () => {
 
     const handleRemoveItem = async (productId: number) => {
         try {
-            await axios.post("http://localhost:5200/api/cart/removeCart", { productId }, { withCredentials: true });
+            await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/cart/removeCart`, { productId }, { withCredentials: true });
             fetchUpdatedCart();
         } catch (error) {
             console.error("Error removing item:", error);
