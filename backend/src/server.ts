@@ -17,9 +17,9 @@ const app = express();
 app.use(
     cors({
         origin: function (origin, callback) {
-            console.log("Origin:", origin); // Log this on the DEPLOYED backend!
-            const allowedOrigins = [process.env.FRONTED_URL]; // Or an array of allowed origins
-            if (!origin || allowedOrigins.includes(origin)) { // Allow all if no origin (e.g. Postman) or origin is in the allowed list
+            console.log("Origin:", origin);
+            const allowedOrigins = [process.env.FRONTED_URL];
+            if (!origin || allowedOrigins.includes(origin)) { 
                 callback(null, true);
             } else {
                 callback(new Error('Not allowed by CORS'));
